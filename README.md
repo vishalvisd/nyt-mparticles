@@ -21,8 +21,8 @@ npm run onlytest [only test]
  
 Highlights
 -------
-- Offline mode: Provides user with cached data when there internet connection is not reliable or unavailable.
-  <br /> It implements Cache with Network strategy caching with service worker
+- Offline mode: Provides user with cached data when the internet connection is not reliable or unavailable.
+  <br /> It implements Cache then Network strategy using a service worker
 - RTK Query used which provides additional layer of caching and 
 less code with api hooks hence less maintainence and more robust code
 - Responsive UI
