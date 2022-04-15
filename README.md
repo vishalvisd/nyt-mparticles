@@ -6,9 +6,13 @@ Dev Server
 -----
 npm start
 
-Build
+Build Production
 ----
 npm run build 
+
+Run - Build Production
+----
+npm run prod
 
 Test
 ----

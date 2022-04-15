@@ -15,7 +15,7 @@ export default defineConfig({
       input: {
         // the default entry point
         app: './index.html',
-        'sw': './sw.js',
+        'sw': './sw.js'
       },
       output: {
         entryFileNames: assetInfo => {

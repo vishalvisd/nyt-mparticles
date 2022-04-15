@@ -1,6 +1,8 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
 
+// Todo: The Key should come from valut or to be provided by user instead hardcoding here
 const NYT_API_KEY = "9Az9tpzyQCUlS8MLG1TEw1mcwlNvdAp6";
+
 const MOST_POPULAR_BASE_URL = "https://api.nytimes.com/svc/mostpopular/v2"
 
 export interface ArticleRT {

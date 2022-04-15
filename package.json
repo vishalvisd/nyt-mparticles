@@ -5,6 +5,7 @@
   "scripts": {
     "start": "vite",
     "build": "tsc && vite build",
+    "prod": "http-server ./dist",
     "preview": "vite preview",
     "test": "vitest run --coverage",
     "onlytest": "vitest run"
@@ -16,6 +17,7 @@
     "@mui/styled-engine-sc": "^5.6.1",
     "@reduxjs/toolkit": "^1.8.1",
     "date-fns": "^2.28.0",
+    "http-server": "^14.1.0",
     "lodash": "^4.17.21",
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
