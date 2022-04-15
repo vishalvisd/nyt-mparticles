@@ -13,7 +13,7 @@
 Highlights  
 -------  
 - Offline mode: Provides user with cached data when the internet connection is not reliable or unavailable.  
-  It implements Cache with Network strategy caching with service worker  
+  It implements Cache then Network strategy caching with service worker  
 - RTK Query used which provides additional layer of caching and   
 less code with api hooks hence less maintainence and more robust code  
 - Responsive UI  
