@@ -13,12 +13,12 @@
 Highlights  
 -------  
 - Offline mode: Provides user with cached data when the internet connection is not reliable or unavailable.  
-  It implements Cache then Network strategy with service worker (Show cached Data and then update when network data available.)
-- RTK Query used which provides additional layer of caching and   
-less code with api hooks hence less maintainence and more robust code  
+  It implements Cache then Network strategy with service worker (Show cached Data and then update when network data available.) 
+- Data Fetching - RTK Query used which simplify loading of data,  and eliminate hand-write data fetching & caching logic.
 - Responsive UI  
-- Unit Tests with code coverage [npm run test]  
+- Unit Tests with code coverage 
 - TypeScripts used in the main codebase while javascript used for testing code  
+- SPA PWA
 - Latest Tech used:   
   - BoilerPlate: Vite  
   - Testing tools: vitest, react-testing-library   
@@ -28,3 +28,11 @@ less code with api hooks hence less maintainence and more robust code
   - Styling: Styled Components  
   - DateTime: date-fns  
   - React 18
+
+
+Todos
+---
+- Let user provide the API key or get it from vault
+- Instead of redirecting to the actual article, first show some details within the application and then let user choose if they want to read the main article.
+- Instead of dynamic caching everything use route based more appropriate caching
+- Add functionality to sort articles by user choice
