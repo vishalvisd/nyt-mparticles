@@ -36,3 +36,10 @@ Todos
 - Instead of redirecting to the actual article, first show some details within the application and then let user choose if they want to read the main article.
 - Instead of dynamic caching everything use route based more appropriate caching
 - Add functionality to sort articles by user choice
+
+
+Lighthouse Report for Desktop and Mobile
+---
+<img width="487" alt="image" src="https://user-images.githubusercontent.com/2000235/163588087-2af3749f-1ba0-464e-bd7d-4be5b5d3157c.png"> <img width="495" alt="image" src="https://user-images.githubusercontent.com/2000235/163588258-e4ab0e75-231c-4fac-b7a8-6b283e981128.png">
+
+
