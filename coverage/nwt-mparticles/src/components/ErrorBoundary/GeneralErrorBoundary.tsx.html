@@ -3,7 +3,7 @@
 <html lang="en">
 
 <head>
-    <title>Code coverage report for nwt-mparticles/src/components/HeadBar/HeadBar.tsx</title>
+    <title>Code coverage report for nwt-mparticles/src/components/ErrorBoundary/GeneralErrorBoundary.tsx</title>
     <meta charset="utf-8" />
     <link rel="stylesheet" href="../../../../prettify.css" />
     <link rel="stylesheet" href="../../../../base.css" />
@@ -19,34 +19,34 @@
 <body>
 <div class='wrapper'>
     <div class='pad1'>
-        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">nwt-mparticles/src/components/HeadBar</a> HeadBar.tsx</h1>
+        <h1><a href="../../../../index.html">All files</a> / <a href="index.html">nwt-mparticles/src/components/ErrorBoundary</a> GeneralErrorBoundary.tsx</h1>
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.54% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>29/31</span>
+                <span class='fraction'>27/33</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>5/5</span>
+                <span class='fraction'>2/3</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">50% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>1/2</span>
+                <span class='fraction'>2/4</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">93.54% </span>
+                <span class="strong">81.81% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>29/31</span>
+                <span class='fraction'>27/33</span>
             </div>
         
             
@@ -94,7 +94,9 @@
 <a name='L29'></a><a href='#L29'>29</a>
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
-<a name='L32'></a><a href='#L32'>32</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L32'></a><a href='#L32'>32</a>
+<a name='L33'></a><a href='#L33'>33</a>
+<a name='L34'></a><a href='#L34'>34</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -103,59 +105,63 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">12x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {memo} from "react";
-import map from "lodash/map";
-import filter from "lodash/filter";
-import Box from '@mui/material/Box';
-import {LookupDays} from "../../features/articles/mostPopularArticleApiSlice";
-import {BrandTitle} from "../AppStyled/AppStyled";
-import {BarWithLoader} from "./HeaderBarStyledComponents";
-import MenuBar, {MenuBarOptions} from "../MenuBar/MenuBar";
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import React, { Component, ErrorInfo, ReactNode } from "react";
 &nbsp;
-function HeadBar({loading, onMenuItemClick}: {loading: boolean, onMenuItemClick: (e:LookupDays)=&gt;void}) {
-    const handleOnMenuItemClick = <span class="fstat-no" title="function not covered" >(v:string) =&gt; {</span>
-<span class="cstat-no" title="statement not covered" >        onMenuItemClick(Number(v));</span>
-<span class="cstat-no" title="statement not covered" >    };</span>
-&nbsp;
-    const numberFromLookupDaysEnum = filter(LookupDays, item=&gt;!isNaN(Number(item)));
-    const menuItems:MenuBarOptions = map(numberFromLookupDaysEnum, v =&gt; ({
-        value: `${v}`,
-        label: `${v} day${v !== 1 ? 's': ''}`
-    }));
-&nbsp;
-    return (
-        &lt;Box data-testid="data-HeaderBar" sx={{ flexGrow: 1 }}&gt;
-            &lt;BarWithLoader isLoading={loading}&gt;
-                &lt;BrandTitle /&gt;
-                &lt;MenuBar options={menuItems} label="Lookback" onItemClick={handleOnMenuItemClick}/&gt;
-            &lt;/BarWithLoader&gt;
-        &lt;/Box&gt;
-    );
+interface Props {
+    children: ReactNode;
 }
 &nbsp;
-export default memo(HeadBar);
+interface State {
+    hasError: boolean;
+}
+&nbsp;
+class GeneralErrorBoundary extends Component&lt;Props, State&gt; {
+    public state: State = {
+        hasError: false
+    };
+&nbsp;
+    public static <span class="fstat-no" title="function not covered" >getDerivedStateFromError(_: Error): State {</span>
+<span class="cstat-no" title="statement not covered" >        return { hasError: true };</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+&nbsp;
+    public <span class="fstat-no" title="function not covered" >componentDidCatch(error: Error, errorInfo: ErrorInfo) {</span>
+<span class="cstat-no" title="statement not covered" >        console.error("Uncaught error:", error, errorInfo);</span>
+<span class="cstat-no" title="statement not covered" >    }</span>
+&nbsp;
+    public render() {
+        if (this.state.hasError) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+<span class="cstat-no" title="statement not covered" >            return &lt;h1&gt;Sorry.. there was an error&lt;/h1&gt;;</span>
+<span class="cstat-no" title="statement not covered" >        }</span>
+&nbsp;
+        return this.props.children;
+    }
+}
+&nbsp;
+export default GeneralErrorBoundary;
 &nbsp;</pre></td></tr></table></pre>
 
                 <div class='push'></div><!-- for sticky footer -->

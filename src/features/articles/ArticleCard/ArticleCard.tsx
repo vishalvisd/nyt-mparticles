@@ -1,10 +1,11 @@
+import {memo} from "react";
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
 import {ArticleRT} from "../mostPopularArticleApiSlice";
 import {ArticleStyledCard} from "./ArticleCardStyledComponents";
 import isEmpty from "lodash/isEmpty";
 
-export default function ArticleCard({data}:{data:ArticleRT}) {
+function ArticleCard({data}:{data:ArticleRT}) {
     const handleArticleClick = (article:ArticleRT)=>{
         // @ts-ignore
         window.open(article.url, '_blank').focus();
@@ -31,3 +32,5 @@ export default function ArticleCard({data}:{data:ArticleRT}) {
         </ArticleStyledCard>
     );
 }
+
+export default memo(ArticleCard);

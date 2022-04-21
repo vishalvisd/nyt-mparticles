@@ -1,3 +1,4 @@
+import {memo} from "react";
 import map from "lodash/map";
 import filter from "lodash/filter";
 import Box from '@mui/material/Box';
@@ -6,7 +7,7 @@ import {BrandTitle} from "../AppStyled/AppStyled";
 import {BarWithLoader} from "./HeaderBarStyledComponents";
 import MenuBar, {MenuBarOptions} from "../MenuBar/MenuBar";
 
-export default function HeadBar({loading, onMenuItemClick}: {loading: boolean, onMenuItemClick: (e:LookupDays)=>void}) {
+function HeadBar({loading, onMenuItemClick}: {loading: boolean, onMenuItemClick: (e:LookupDays)=>void}) {
     const handleOnMenuItemClick = (v:string) => {
         onMenuItemClick(Number(v));
     };
@@ -26,3 +27,5 @@ export default function HeadBar({loading, onMenuItemClick}: {loading: boolean, o
         </Box>
     );
 }
+
+export default memo(HeadBar);

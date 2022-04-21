@@ -1,41 +1,58 @@
-import {useEffect, useState} from 'react';
+import {useEffect, useState, memo} from 'react';
 import map from "lodash/map";
-import Snackbar from '@mui/material/Snackbar';
-import {dataSource} from "../../../App";
 import ArticleCard from "../ArticleCard/ArticleCard";
-import {ArticleRT} from "../mostPopularArticleApiSlice";
+import {
+    ArticleRT,
+    fetchMostPopularArticlesFromCache,
+    LookupDays,
+    DataSource,
+    useFetchMostPopularArticlesQuery
+} from "../mostPopularArticleApiSlice";
 import {ArticlesStacked} from "./ArticleListStyledComponets";
-import Slide, {SlideProps}  from '@mui/material/Slide';
-type TransitionProps = Omit<SlideProps, 'direction'>;
+import isEmpty from "lodash/isEmpty";
+import Notification from "../../../components/Notification/Notification";
 
-function ArticleList({dataSourceType, data = []}: {dataSourceType:dataSource, data?: Array<ArticleRT>}) {
-    const [showDataLoadedNotifier, setShowDataLoadedNotifier] = useState(false);
+let dataToSet:Array<ArticleRT> = [], dataSourceToSet = DataSource.NONE;
+
+function ArticleList({lookupDays, onListChange}: {lookupDays: LookupDays, onListChange: (v: DataSource)=>void}) {
+    const [articlesData, setArticlesData] = useState<Array<ArticleRT>>([]);
+    const [dataSourceType, setDataSourceType] = useState<DataSource>(DataSource.NONE);
+
+    const {data = [], isFetching, isError} = useFetchMostPopularArticlesQuery(lookupDays)
 
     useEffect(()=>{
-        setShowDataLoadedNotifier(dataSourceType === dataSource.CACHE || dataSourceType === dataSource.API);
-    }, [dataSourceType])
+        (async function (){
+            dataToSet = [];
+            dataSourceToSet = DataSource.NONE;
+            if (isFetching === false && !isEmpty(data) && !isError){
+                dataToSet = data;
+                dataSourceToSet = DataSource.API;
+            } else {
+                const cacheResponse = await fetchMostPopularArticlesFromCache(lookupDays);
+                if (!isEmpty(cacheResponse) && isEmpty(dataToSet)){
+                    dataToSet = cacheResponse!;
+                    dataSourceToSet = DataSource.CACHE;
+                }
+            }
+            setArticlesData(dataToSet);
+            setDataSourceType(dataSourceToSet);
+            onListChange(dataSourceToSet);
+        })()
+    }, [isFetching, lookupDays])
 
     return (
         <div data-testid="data-ArticleList">
             <ArticlesStacked spacing={2}>
                 {
-                    map(data, v => {
+                    map(articlesData, v => {
                         return <ArticleCard key={v.id} data={v}/>
                     })
                 }
             </ArticlesStacked>
-            <Snackbar
-                open={showDataLoadedNotifier}
-                autoHideDuration={3000}
-                message={dataSourceType === dataSource.CACHE ? "Articles loaded from cache"
-                    : (dataSourceType === dataSource.API ? "Live articles loaded from internet" : "")}
-                TransitionComponent={(props: TransitionProps)=>{
-                    return <Slide {...props} direction="right" />;
-                }}
-                onClose={() => {setShowDataLoadedNotifier(false)}}
-            />
+            <Notification message={dataSourceType === DataSource.CACHE ? "Articles loaded from cache"
+                : (dataSourceType === DataSource.API ? "Live articles loaded from internet" : "")} />
         </div>
     );
 }
 
-export default ArticleList;
+export default memo(ArticleList);

@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">90.56% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>45/50</span>
+                <span class='fraction'>48/53</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.5% </span>
+                <span class="strong">90.9% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>7/8</span>
+                <span class='fraction'>10/11</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">85.71% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>6/7</span>
+                <span class='fraction'>8/8</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">90% </span>
+                <span class="strong">90.56% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>45/50</span>
+                <span class='fraction'>48/53</span>
             </div>
         
             
@@ -113,7 +113,13 @@
 <a name='L48'></a><a href='#L48'>48</a>
 <a name='L49'></a><a href='#L49'>49</a>
 <a name='L50'></a><a href='#L50'>50</a>
-<a name='L51'></a><a href='#L51'>51</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L51'></a><a href='#L51'>51</a>
+<a name='L52'></a><a href='#L52'>52</a>
+<a name='L53'></a><a href='#L53'>53</a>
+<a name='L54'></a><a href='#L54'>54</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -145,8 +151,8 @@
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
 <span class="cline-any cline-yes">3x</span>
@@ -163,12 +169,12 @@
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">2x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import get from "lodash/get";
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
+import config from '../../apiConfig.json'
+import fetch from "isomorphic-fetch";
 &nbsp;
-// Todo: The Key should come from valut or to be provided by user instead hardcoding here
-const NYT_API_KEY = "9Az9tpzyQCUlS8MLG1TEw1mcwlNvdAp6";
-&nbsp;
-const MOST_POPULAR_BASE_URL = "https://api.nytimes.com/svc/mostpopular/v2"
+const MOST_POPULAR_BASE_URL = `${get(config, "NYT_API_BASE_URLS.BASE")}/${get(config, "NYT_API_BASE_URLS.MOST_POPULAR")}`;
 &nbsp;
 export interface ArticleRT {
     id: string;
@@ -186,18 +192,21 @@ export enum LookupDays {
     Month = 30
 }
 &nbsp;
+export enum DataSource {NONE, CACHE, API}
+&nbsp;
 export const mostPopularArticleApiSlice = createApi({
     reducerPath: 'api',
     baseQuery: fetchBaseQuery({
-        baseUrl: MOST_POPULAR_BASE_URL
+        baseUrl: MOST_POPULAR_BASE_URL,
+        fetchFn: fetch
     }),
     endpoints(builder) {
         return {
             fetchMostPopularArticles: builder.query&lt;Array&lt;ArticleRT&gt;, LookupDays | void&gt;({
                 query(lookupDays = LookupDays.Seven){
-                    return `/viewed/${lookupDays}.json?api-key=${NYT_API_KEY}`
+                    return `/viewed/${lookupDays}.json?api-key=${config.NYT_API_KEY}`
                 },
-                transformResponse: <span class="fstat-no" title="function not covered" >(response: { results: Array&lt;ArticleRT&gt; }) =&gt; response.results,</span>
+                transformResponse: (response: { results: Array&lt;ArticleRT&gt; }) =&gt; response.results,
             })
         }
     }
@@ -207,7 +216,7 @@ export const {useFetchMostPopularArticlesQuery} = mostPopularArticleApiSlice;
 &nbsp;
 export async function fetchMostPopularArticlesFromCache(lookupDays:LookupDays = LookupDays.Seven): Promise&lt;Array&lt;ArticleRT&gt; | undefined&gt;{
     if ("caches" in window)<span class="branch-0 cbranch-no" title="branch not covered" >{</span>
-<span class="cstat-no" title="statement not covered" >        const response = await caches.match(`${MOST_POPULAR_BASE_URL}/viewed/${lookupDays}.json?api-key=${NYT_API_KEY}`);</span>
+<span class="cstat-no" title="statement not covered" >        const response = await caches.match(`${MOST_POPULAR_BASE_URL}/viewed/${lookupDays}.json?api-key=${config.NYT_API_KEY}`);</span>
 <span class="cstat-no" title="statement not covered" >        if (response){</span>
 <span class="cstat-no" title="statement not covered" >            return response.json().then((res: { results: Array&lt;ArticleRT&gt; }) =&gt; res.results)</span>
 <span class="cstat-no" title="statement not covered" >        }</span>
@@ -220,7 +229,7 @@ export async function fetchMostPopularArticlesFromCache(lookupDays:LookupDays = 
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Wed Apr 20 2022 21:31:17 GMT+0530 (India Standard Time)
+                at Thu Apr 21 2022 23:40:12 GMT+0530 (India Standard Time)
             </div>
         <script src="../../../../prettify.js"></script>
         <script>

@@ -1,49 +1,30 @@
-import {useState, useEffect} from 'react';
-import isEmpty from "lodash/isEmpty";
+import {useState, useCallback, Suspense, lazy} from 'react';
 import {
-    useFetchMostPopularArticlesQuery,
-    fetchMostPopularArticlesFromCache,
-    ArticleRT,
+    DataSource,
     LookupDays
 } from "./features/articles/mostPopularArticleApiSlice";
 import * as React from "react";
 import HeadBar from "./components/HeadBar/HeadBar";
-import ArticleList from "./features/articles/ArticleList/ArticleList"
-import {AppContainer} from "./components/AppStyled/AppStyled"
+import {AppContainer, SuspenseBackground} from "./components/AppStyled/AppStyled"
+import GeneralErrorBoundary from "./components/ErrorBoundary/GeneralErrorBoundary";
 
-export enum dataSource {NONE, CACHE, API}
-let dataToSet:Array<ArticleRT> = [], dataSourceToSet = dataSource.NONE;
+const ArticleList = lazy(() => import("./features/articles/ArticleList/ArticleList"))
 
 function App() {
     const [lookupDays, setLookupDays] = useState<LookupDays>(LookupDays.Seven);
-    const [articlesData, setArticlesData] = useState<Array<ArticleRT>>([]);
-    const [dataSourceType, setDataSourceType] = useState<dataSource>(dataSource.NONE);
-    const {data = [], isFetching, isError} = useFetchMostPopularArticlesQuery(lookupDays)
+    const [dataSourceType, setDataSourceType] = useState<DataSource>(DataSource.NONE)
 
-    useEffect(()=>{
-        dataToSet = [];
-        dataSourceToSet = dataSource.NONE;
-        async function dataFetch(){
-            if (isFetching === false && !isEmpty(data) && !isError){
-                dataToSet = data;
-                dataSourceToSet = dataSource.API;
-            } else {
-                const cacheResponse = await fetchMostPopularArticlesFromCache(lookupDays);
-                if (!isEmpty(cacheResponse) && isEmpty(dataToSet)){
-                    dataToSet = cacheResponse!;
-                    dataSourceToSet = dataSource.CACHE;
-                }
-            }
-            setArticlesData(dataToSet);
-            setDataSourceType(dataSourceToSet);
-        }
-        dataFetch();
-    }, [isFetching, lookupDays])
+    const handleMenuItemClick = useCallback(setLookupDays, [dataSourceType]);
+    const handleListChange = useCallback(setDataSourceType, [lookupDays]);
 
     return (
         <AppContainer data-testid="data-app">
-            <HeadBar loading={dataSourceType !== dataSource.API} onMenuItemClick={setLookupDays}/>
-            <ArticleList data={articlesData} dataSourceType={dataSourceType}/>
+            <GeneralErrorBoundary>
+                <HeadBar loading={dataSourceType !== DataSource.API} onMenuItemClick={handleMenuItemClick}/>
+                <Suspense fallback={<SuspenseBackground />}>
+                    <ArticleList lookupDays={lookupDays} onListChange={handleListChange}/>
+                </Suspense>
+            </GeneralErrorBoundary>
         </AppContainer>
     )
 }
