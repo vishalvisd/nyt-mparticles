@@ -1,5 +1,5 @@
 {
-  "// Todo: The Key should come from valut or to be provided by user instead hardcoding here":"",
+  "// Todo: The Key should come from valut or to be provided by user instead hardcoding here": "",
   "NYT_API_KEY": "9Az9tpzyQCUlS8MLG1TEw1mcwlNvdAp6",
   "NYT_API_BASE_URLS": {
     "BASE": "https://api.nytimes.com/svc",

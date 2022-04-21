@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.66% </span>
+                <span class="strong">91.89% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>33/36</span>
+                <span class='fraction'>34/37</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
                 <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>4/4</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">91.66% </span>
+                <span class="strong">91.89% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>33/36</span>
+                <span class='fraction'>34/37</span>
             </div>
         
             
@@ -99,75 +99,78 @@
 <a name='L34'></a><a href='#L34'>34</a>
 <a name='L35'></a><a href='#L35'>35</a>
 <a name='L36'></a><a href='#L36'>36</a>
-<a name='L37'></a><a href='#L37'>37</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L37'></a><a href='#L37'>37</a>
+<a name='L38'></a><a href='#L38'>38</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">123x</span>
 <span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">121x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
+<span class="cline-any cline-yes">123x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {memo} from "react";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {memo} from 'react';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-import {ArticleRT} from "../mostPopularArticleApiSlice";
-import {ArticleStyledCard} from "./ArticleCardStyledComponents";
-import isEmpty from "lodash/isEmpty";
+import Skeleton from '@mui/material/Skeleton';
+import {ArticleRT} from '../mostPopularArticleApiSlice';
+import {ArticleStyledCard} from './ArticleCardStyledComponents';
+import isEmpty from 'lodash/isEmpty';
 &nbsp;
-function ArticleCard({data}:{data:ArticleRT}) {
-    const handleArticleClick = <span class="fstat-no" title="function not covered" >(article:ArticleRT)=&gt;{</span>
+function ArticleCard({data}: { data: ArticleRT }) {
+    const handleArticleClick = <span class="fstat-no" title="function not covered" >(article: ArticleRT) =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >        // @ts-ignore</span>
 <span class="cstat-no" title="statement not covered" >        window.open(article.url, '_blank').focus();</span>
 <span class="cstat-no" title="statement not covered" >    }</span>
-    if (isEmpty(data.url) || isEmpty(data.title)){
+    if (isEmpty(data.url) || isEmpty(data.title)) {
         return null;
     }
-    return (
-        &lt;ArticleStyledCard data-testid={data.id} raised={true} onClick={<span class="fstat-no" title="function not covered" >()=&gt;handleArticleClick(d</span>ata)}&gt;
+    return data.loading
+        ? &lt;Skeleton variant="rectangular" animation="wave" height={160} /&gt;
+        : &lt;ArticleStyledCard data-testid={data.id} raised={true} onClick={<span class="fstat-no" title="function not covered" >() =&gt; handleArticleClick(d</span>ata)}&gt;
             &lt;CardContent&gt;
-                &lt;Typography sx={{ fontSize: 14 }} color="text.secondary" gutterBottom&gt;
+                &lt;Typography sx={{fontSize: 14}} color='text.secondary' gutterBottom&gt;
                     {data.published_date}
                 &lt;/Typography&gt;
-                &lt;Typography variant="h5" component="div"&gt;
+                &lt;Typography variant='h5' component='div'&gt;
                     {data.title}
                 &lt;/Typography&gt;
-                &lt;Typography sx={{ mb: 1.5 }} color="text.secondary"&gt;
+                &lt;Typography sx={{mb: 1.5}} color='text.secondary'&gt;
                     {data.abstract}
                 &lt;/Typography&gt;
-                &lt;Typography variant="body2"&gt;
+                &lt;Typography variant='body2'&gt;
                     {data.byline}
                 &lt;/Typography&gt;
             &lt;/CardContent&gt;
-        &lt;/ArticleStyledCard&gt;
-    );
+        &lt;/ArticleStyledCard&gt;;
 }
 &nbsp;
 export default memo(ArticleCard);
@@ -178,7 +181,7 @@ export default memo(ArticleCard);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Apr 21 2022 23:40:12 GMT+0530 (India Standard Time)
+                at Fri Apr 22 2022 01:05:28 GMT+0530 (India Standard Time)
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>

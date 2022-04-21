@@ -1,14 +1,11 @@
-import {useState, useCallback, Suspense, lazy} from 'react';
-import {
-    DataSource,
-    LookupDays
-} from "./features/articles/mostPopularArticleApiSlice";
-import * as React from "react";
-import HeadBar from "./components/HeadBar/HeadBar";
-import {AppContainer, SuspenseBackground} from "./components/AppStyled/AppStyled"
-import GeneralErrorBoundary from "./components/ErrorBoundary/GeneralErrorBoundary";
+import * as React from 'react';
+import {lazy, Suspense, useCallback, useState} from 'react';
+import {DataSource, LookupDays} from './features/articles/mostPopularArticleApiSlice';
+import HeadBar from './components/HeadBar/HeadBar';
+import {AppContainer, SuspenseBackground} from './components/AppStyled/AppStyled'
+import GeneralErrorBoundary from './components/ErrorBoundary/GeneralErrorBoundary';
 
-const ArticleList = lazy(() => import("./features/articles/ArticleList/ArticleList"))
+const ArticleList = lazy(() => import('./features/articles/ArticleList/ArticleList'))
 
 function App() {
     const [lookupDays, setLookupDays] = useState<LookupDays>(LookupDays.Seven);
@@ -18,10 +15,10 @@ function App() {
     const handleListChange = useCallback(setDataSourceType, [lookupDays]);
 
     return (
-        <AppContainer data-testid="data-app">
+        <AppContainer data-testid='data-app'>
             <GeneralErrorBoundary>
                 <HeadBar loading={dataSourceType !== DataSource.API} onMenuItemClick={handleMenuItemClick}/>
-                <Suspense fallback={<SuspenseBackground />}>
+                <Suspense fallback={<SuspenseBackground/>}>
                     <ArticleList lookupDays={lookupDays} onListChange={handleListChange}/>
                 </Suspense>
             </GeneralErrorBoundary>

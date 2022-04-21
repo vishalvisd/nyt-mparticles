@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.93% </span>
+                <span class="strong">90.16% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>51/58</span>
+                <span class='fraction'>55/61</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">30% </span>
+                <span class="strong">33.33% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>3/10</span>
+                <span class='fraction'>4/12</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">87.93% </span>
+                <span class="strong">90.16% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>51/58</span>
+                <span class='fraction'>55/61</span>
             </div>
         
             
@@ -121,7 +121,11 @@
 <a name='L56'></a><a href='#L56'>56</a>
 <a name='L57'></a><a href='#L57'>57</a>
 <a name='L58'></a><a href='#L58'>58</a>
-<a name='L59'></a><a href='#L59'>59</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<a name='L59'></a><a href='#L59'>59</a>
+<a name='L60'></a><a href='#L60'>60</a>
+<a name='L61'></a><a href='#L61'>61</a>
+<a name='L62'></a><a href='#L62'>62</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
@@ -169,7 +173,9 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">6x</span>
+<span class="cline-any cline-yes">120x</span>
+<span class="cline-any cline-yes">120x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">6x</span>
@@ -179,38 +185,39 @@
 <span class="cline-any cline-yes">6x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {useEffect, useState, memo} from 'react';
-import map from "lodash/map";
-import ArticleCard from "../ArticleCard/ArticleCard";
+<span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">import {memo, useEffect, useState} from 'react';
+import map from 'lodash/map';
+import isEmpty from 'lodash/isEmpty';
+import fill from 'lodash/fill';
+import ArticleCard from '../ArticleCard/ArticleCard';
 import {
     ArticleRT,
+    DataSource,
     fetchMostPopularArticlesFromCache,
     LookupDays,
-    DataSource,
     useFetchMostPopularArticlesQuery
-} from "../mostPopularArticleApiSlice";
-import {ArticlesStacked} from "./ArticleListStyledComponets";
-import isEmpty from "lodash/isEmpty";
-import Notification from "../../../components/Notification/Notification";
+} from '../mostPopularArticleApiSlice';
+import {ArticlesStacked} from './ArticleListStyledComponets';
+import Notification from '../../../components/Notification/Notification';
 &nbsp;
-let dataToSet:Array&lt;ArticleRT&gt; = [], dataSourceToSet = DataSource.NONE;
+let dataToSet: Array&lt;ArticleRT&gt; = [], dataSourceToSet = DataSource.NONE;
 &nbsp;
-function ArticleList({lookupDays, onListChange}: {lookupDays: LookupDays, onListChange: (v: DataSource)=&gt;void}) {
+function ArticleList({lookupDays, onListChange}: { lookupDays: LookupDays, onListChange: (v: DataSource) =&gt; void }) {
     const [articlesData, setArticlesData] = useState&lt;Array&lt;ArticleRT&gt;&gt;([]);
     const [dataSourceType, setDataSourceType] = useState&lt;DataSource&gt;(DataSource.NONE);
 &nbsp;
     const {data = [], isFetching, isError} = useFetchMostPopularArticlesQuery(lookupDays)
 &nbsp;
-    useEffect(()=&gt;{
-        (async function (){
+    useEffect(() =&gt; {
+        (async function () {
             dataToSet = [];
             dataSourceToSet = DataSource.NONE;
-            if (isFetching === <span class="branch-0 cbranch-no" title="branch not covered" >false &amp;&amp; !isEmpty<span class="branch-0 cbranch-no" title="branch not covered" >(d</span>ata) &amp;&amp; !isError)<span class="branch-0 cbranch-no" title="branch not covered" >{</span></span>
+            if (isFetching === <span class="branch-0 cbranch-no" title="branch not covered" >false &amp;&amp; !isEmpty<span class="branch-0 cbranch-no" title="branch not covered" >(d</span>ata) &amp;&amp; !isError) <span class="branch-0 cbranch-no" title="branch not covered" >{</span></span>
 <span class="cstat-no" title="statement not covered" >                dataToSet = data;</span>
 <span class="cstat-no" title="statement not covered" >                dataSourceToSet = DataSource.API;</span>
             } else {
                 const cacheResponse = await fetchMostPopularArticlesFromCache(lookupDays);
-                if (!isEmpty<span class="branch-0 cbranch-no" title="branch not covered" >(cacheResponse) &amp;&amp; isEmpty(d</span>ataToSet))<span class="branch-0 cbranch-no" title="branch not covered" >{</span>
+                if (!isEmpty<span class="branch-0 cbranch-no" title="branch not covered" >(cacheResponse) &amp;&amp; isEmpty(d</span>ataToSet)) <span class="branch-0 cbranch-no" title="branch not covered" >{</span>
 <span class="cstat-no" title="statement not covered" >                    dataToSet = cacheResponse!;</span>
 <span class="cstat-no" title="statement not covered" >                    dataSourceToSet = DataSource.CACHE;</span>
 <span class="cstat-no" title="statement not covered" >                }</span>
@@ -222,16 +229,18 @@ function ArticleList({lookupDays, onListChange}: {lookupDays: LookupDays, onList
     }, [isFetching, lookupDays])
 &nbsp;
     return (
-        &lt;div data-testid="data-ArticleList"&gt;
+        &lt;div data-testid='data-ArticleList' style={{width: "100%"}}&gt;
             &lt;ArticlesStacked spacing={2}&gt;
                 {
-                    map(articlesData, v =&gt; {
+                    !isEmpty<span class="branch-0 cbranch-no" title="branch not covered" >(articlesData) ? map(articlesData, v =&gt; {</span>
 <span class="cstat-no" title="statement not covered" >                        return &lt;ArticleCard key={v.id} data={v}/&gt;</span>
-<span class="cstat-no" title="statement not covered" >                    })</span>
+                    }) : map(fill(Array(20), {loading: true, url: ".", title: "."} as ArticleRT), (v, i) =&gt; {
+                        return &lt;ArticleCard key={i} data={v}/&gt;
+                    })
                 }
             &lt;/ArticlesStacked&gt;
-            &lt;Notification message={dataSourceType === DataSource.<span class="branch-0 cbranch-no" title="branch not covered" >CACHE ? "Articles loaded from cache"</span>
-                : (dataSourceType === DataSource.<span class="branch-0 cbranch-no" title="branch not covered" >API ? "Live articles loaded from internet" : "</span>")} /&gt;
+            &lt;Notification message={dataSourceType === DataSource.<span class="branch-0 cbranch-no" title="branch not covered" >CACHE ? 'Articles loaded from cache'</span>
+                : (dataSourceType === DataSource.<span class="branch-0 cbranch-no" title="branch not covered" >API ? 'Live articles loaded from internet' : "</span>")}/&gt;
         &lt;/div&gt;
     );
 }
@@ -244,7 +253,7 @@ export default memo(ArticleList);
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at Thu Apr 21 2022 23:40:12 GMT+0530 (India Standard Time)
+                at Fri Apr 22 2022 01:05:28 GMT+0530 (India Standard Time)
             </div>
         <script src="../../../../../prettify.js"></script>
         <script>
