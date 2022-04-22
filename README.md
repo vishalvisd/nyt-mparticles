@@ -36,10 +36,10 @@ Todos
 - Instead of redirecting to the actual article, first show some details within the application and then let user choose if they want to read the main article.  
 - Instead of dynamic caching everything use route based more appropriate caching  
 - Add functionality to sort articles by user choice  
-- SSR and template based rendering  
+- SSR and template based pre-rendering  
   
   
-Lighthouse Report :-  
+Lighthouse Report 
 ---  
 | Desktop | Mobile |
 |--|--|
