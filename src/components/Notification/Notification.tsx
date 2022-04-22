@@ -1,4 +1,4 @@
-import {memo, useLayoutEffect, useState} from 'react';
+import { memo, useLayoutEffect, useState } from 'react';
 import isEmpty from 'lodash/isEmpty';
 import Snackbar from '@mui/material/Snackbar';
 

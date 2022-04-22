@@ -1,11 +1,11 @@
-import {memo} from 'react';
-import map from 'lodash/map';
+import { memo } from 'react';
 import filter from 'lodash/filter';
+import map from 'lodash/map';
 import Box from '@mui/material/Box';
-import {LookupDays} from '../../features/articles/mostPopularArticleApiSlice';
-import {BrandTitle} from '../AppStyled/AppStyled';
-import {BarWithLoader} from './HeaderBarStyledComponents';
-import MenuBar, {MenuBarOptions} from '../MenuBar/MenuBar';
+import { LookupDays } from '../../features/articles/mostPopularArticleApiSlice';
+import { BrandTitle } from '../AppStyled/AppStyled';
+import MenuBar, { MenuBarOptions } from '../MenuBar/MenuBar';
+import { BarWithLoader } from './HeaderBarStyledComponents';
 
 function HeadBar({loading, onMenuItemClick}: { loading: boolean, onMenuItemClick: (e: LookupDays) => void }) {
     const handleOnMenuItemClick = (v: string) => {

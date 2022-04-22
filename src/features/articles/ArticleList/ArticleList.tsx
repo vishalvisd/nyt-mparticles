@@ -1,17 +1,14 @@
-import {memo, useEffect, useState} from 'react';
-import map from 'lodash/map';
-import isEmpty from 'lodash/isEmpty';
+import { memo, useEffect, useState } from 'react';
 import fill from 'lodash/fill';
+import isEmpty from 'lodash/isEmpty';
+import map from 'lodash/map';
+import Notification from '../../../components/Notification/Notification';
 import ArticleCard from '../ArticleCard/ArticleCard';
 import {
-    ArticleRT,
-    DataSource,
-    fetchMostPopularArticlesFromCache,
-    LookupDays,
-    useFetchMostPopularArticlesQuery
+  ArticleRT, DataSource, fetchMostPopularArticlesFromCache, LookupDays,
+  useFetchMostPopularArticlesQuery,
 } from '../mostPopularArticleApiSlice';
-import {ArticlesStacked} from './ArticleListStyledComponets';
-import Notification from '../../../components/Notification/Notification';
+import { ArticlesStacked } from './ArticleListStyledComponets';
 
 let dataToSet: Array<ArticleRT> = [], dataSourceToSet = DataSource.NONE;
 

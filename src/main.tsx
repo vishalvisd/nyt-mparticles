@@ -1,9 +1,9 @@
-import React, {lazy, Suspense} from 'react'
-import ReactDOM from 'react-dom/client'
-import {Provider} from 'react-redux'
-import {store} from './app/store'
-import './index.css'
-import {SuspenseBackground} from './components/AppStyled/AppStyled';
+import './index.css';
+import React, { lazy, Suspense } from 'react';
+import ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
+import { store } from './app/store';
+import { SuspenseBackground } from './components/AppStyled/AppStyled';
 
 const App = lazy(() => import('./App'))
 

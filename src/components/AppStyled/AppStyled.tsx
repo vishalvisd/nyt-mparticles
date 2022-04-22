@@ -1,8 +1,8 @@
-import {memo} from 'react';
+import { memo } from 'react';
 import Box from '@mui/material/Box';
-import {styled} from '@mui/system';
+import { keyframes } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
-import {keyframes} from '@mui/material/styles';
+import { styled } from '@mui/system';
 
 export const AppContainer = styled(Box)({
     textAlign: 'center',
@@ -23,8 +23,10 @@ export const BrandTitle = memo(() => <Typography variant='h5' component='div' sx
 
 const suspensepulseAnimation = keyframes`
   0% {background-color: #eee;}
+  25% {background-color: #ddd;}
   50% {background-color: #ccc;}
-  100% {background-color: #aaa;}
+  75% {background-color: #ddd;}
+  100% {background-color: #eee;}
 `
 
 export const SuspenseBackground = styled('div')({
@@ -33,6 +35,6 @@ export const SuspenseBackground = styled('div')({
     position: 'absolute',
     backgroundColor: '#eee',
     animationName: suspensepulseAnimation,
-    animationDuration: '1s',
+    animationDuration: '1.5s',
     animationIterationCount: 'infinite',
 });

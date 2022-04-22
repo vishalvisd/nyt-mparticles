@@ -1,12 +1,12 @@
-import {memo, MouseEvent, useState} from 'react';
+import { memo, MouseEvent, useState } from 'react';
 import map from 'lodash/map';
-import MenuItem from '@mui/material/MenuItem';
-import Typography from '@mui/material/Typography';
-import Menu from '@mui/material/Menu';
-import Tooltip from '@mui/material/Tooltip';
-import Button from '@mui/material/Button';
+import { IconButton } from '@mui/material';
 import Box from '@mui/material/Box';
-import {IconButton} from '@mui/material';
+import Button from '@mui/material/Button';
+import Menu from '@mui/material/Menu';
+import MenuItem from '@mui/material/MenuItem';
+import Tooltip from '@mui/material/Tooltip';
+import Typography from '@mui/material/Typography';
 
 export type MenuBarOptions = Array<{ value: string, label: string }>
 

@@ -1,13 +1,13 @@
-import get from 'lodash/get';
-import {beforeEach, expect, test} from 'vitest'
-import {cleanup, render, screen} from '../../../../test-utils';
-import nock from 'nock';
-import ArticleList from './ArticleList';
 import * as React from 'react';
-import {act} from '@testing-library/react';
-import {Provider} from 'react-redux';
-import {store} from '../../../app/store';
-import config from '../../../apiConfig.json'
+import get from 'lodash/get';
+import nock from 'nock';
+import { Provider } from 'react-redux';
+import { beforeEach, expect, test } from 'vitest';
+import { act } from '@testing-library/react';
+import { cleanup, render, screen } from '../../../../test-utils';
+import config from '../../../apiConfig.json';
+import { store } from '../../../app/store';
+import ArticleList from './ArticleList';
 
 const MOST_POPULAR_BASE_URL = `${get(config, 'NYT_API_BASE_URLS.BASE')}/${get(config, 'NYT_API_BASE_URLS.MOST_POPULAR')}`;
 

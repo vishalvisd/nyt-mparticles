@@ -1,5 +1,5 @@
-import {beforeEach, expect, test} from 'vitest'
-import {cleanup, render, screen} from '../../../test-utils';
+import { beforeEach, expect, test } from 'vitest';
+import { cleanup, render, screen } from '../../../test-utils';
 import HeadBar from './HeadBar';
 
 beforeEach(() => {

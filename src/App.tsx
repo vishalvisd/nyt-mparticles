@@ -1,9 +1,13 @@
-import * as React from 'react';
-import {lazy, Suspense, useCallback, useState} from 'react';
-import {DataSource, LookupDays} from './features/articles/mostPopularArticleApiSlice';
+import { lazy, Suspense, useCallback, useState } from 'react';
+import {
+  AppContainer, SuspenseBackground,
+} from './components/AppStyled/AppStyled';
+import GeneralErrorBoundary
+  from './components/ErrorBoundary/GeneralErrorBoundary';
 import HeadBar from './components/HeadBar/HeadBar';
-import {AppContainer, SuspenseBackground} from './components/AppStyled/AppStyled'
-import GeneralErrorBoundary from './components/ErrorBoundary/GeneralErrorBoundary';
+import {
+  DataSource, LookupDays,
+} from './features/articles/mostPopularArticleApiSlice';
 
 const ArticleList = lazy(() => import('./features/articles/ArticleList/ArticleList'))
 

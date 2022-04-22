@@ -1,5 +1,5 @@
-import {beforeEach, describe, expect, it} from 'vitest'
-import {cleanup, render, screen} from '../../../../test-utils';
+import { beforeEach, describe, expect, it } from 'vitest';
+import { cleanup, render, screen } from '../../../../test-utils';
 import ArticleCard from './ArticleCard';
 
 beforeEach(() => {

@@ -1,5 +1,7 @@
-import {configureStore} from '@reduxjs/toolkit';
-import {mostPopularArticleApiSlice} from '../features/articles/mostPopularArticleApiSlice';
+import { configureStore } from '@reduxjs/toolkit';
+import {
+  mostPopularArticleApiSlice,
+} from '../features/articles/mostPopularArticleApiSlice';
 
 export const store = configureStore({
     reducer: {

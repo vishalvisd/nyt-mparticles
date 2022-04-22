@@ -1,9 +1,9 @@
-import {memo, ReactElement, ReactNode} from 'react';
-import {styled} from '@mui/material/styles';
+import { memo, ReactElement, ReactNode } from 'react';
 import AppBar from '@mui/material/AppBar';
-import Toolbar from '@mui/material/Toolbar';
 import Box from '@mui/material/Box';
 import LinearProgress from '@mui/material/LinearProgress';
+import { styled } from '@mui/material/styles';
+import Toolbar from '@mui/material/Toolbar';
 
 export const BarWithLoader = memo(styled(({children, isLoading}: { children: ReactNode, isLoading: boolean }): ReactElement => {
     return <AppBar position='fixed'>

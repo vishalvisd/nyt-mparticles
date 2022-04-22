@@ -1,7 +1,7 @@
-import get from 'lodash/get';
-import {createApi, fetchBaseQuery} from '@reduxjs/toolkit/query/react'
-import config from '../../apiConfig.json'
 import fetch from 'isomorphic-fetch';
+import get from 'lodash/get';
+import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react';
+import config from '../../apiConfig.json';
 
 const MOST_POPULAR_BASE_URL = `${get(config, 'NYT_API_BASE_URLS.BASE')}/${get(config, 'NYT_API_BASE_URLS.MOST_POPULAR')}`;
 

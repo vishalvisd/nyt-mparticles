@@ -1,0 +1,13 @@
+{
+  "bracketSpacing": true,
+  "emptyLinesBetweenGroups": 0,
+  "insertFinalNewline": true,
+  "quoteMark": "single",
+  "wrappingStyle": {
+    "maxBindingNamesPerLine": 10,
+    "maxDefaultAndBindingNamesPerLine": 10,
+    "maxExportNamesPerLine": 10,
+    "maxNamesPerWrappedLine": 10,
+    "ignoreComments": false
+  }
+}

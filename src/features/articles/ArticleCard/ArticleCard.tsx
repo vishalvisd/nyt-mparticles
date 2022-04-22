@@ -1,10 +1,10 @@
-import {memo} from 'react';
-import CardContent from '@mui/material/CardContent';
-import Typography from '@mui/material/Typography';
-import Skeleton from '@mui/material/Skeleton';
-import {ArticleRT} from '../mostPopularArticleApiSlice';
-import {ArticleStyledCard} from './ArticleCardStyledComponents';
+import { memo } from 'react';
 import isEmpty from 'lodash/isEmpty';
+import CardContent from '@mui/material/CardContent';
+import Skeleton from '@mui/material/Skeleton';
+import Typography from '@mui/material/Typography';
+import { ArticleRT } from '../mostPopularArticleApiSlice';
+import { ArticleStyledCard } from './ArticleCardStyledComponents';
 
 function ArticleCard({data}: { data: ArticleRT }) {
     const handleArticleClick = (article: ArticleRT) => {
